@@ -20,7 +20,7 @@ self.addEventListener('install', function (eventinstall) {
     'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js',
     'https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'
   ];
-  const static_cache=caches.open(_dynamicCache).then(cache => {
+  const static_cache=caches.open(_staticCache).then(cache => {
     return cache.addAll(files_appshell);
   }).catch(error => {
     console.log(error);
@@ -109,8 +109,8 @@ const res = caches.match(event.request)
 .then((param) => {
   return param ? param : fetch(event.request).then(fetchResponse=>{
     caches.open(_dynamicCache).then(cache=>{
-      cache.put(event.request,fetchResponse);
-       return fetchResponse.clone();
+      cache.put(event.request,fetchResponse.clone());
+       return fetchResponse;
     })
   });
 })

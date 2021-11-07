@@ -11,7 +11,7 @@ GetCanciones:function(){
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "shazam.p.rapidapi.com",
-            "x-rapidapi-key": "be4160757fmshb0b309d2091a31ap1e4834jsn80e5bd377bb2"
+            "x-rapidapi-key": "4cc8708256msh48ed60a88d30a22p1282eejsnfb621607ed88"
         }
     })
     .then(response => response.json()).then(response => {
@@ -40,7 +40,7 @@ GetCanciones:function(){
             </div>
                 <div class=""><h4 class="card-title mb-1">Ups... no se encontro ninguna canción.</h4></div>
              </div>`;
-          console.log("nno data");
+          console.log("No data");
         }
      })
     .catch(err => {
@@ -50,7 +50,7 @@ GetCanciones:function(){
         </div>
             <div class=""><h4 class="card-title mb-1">Ups... no se encontro ninguna canción.</h4></div>
          </div>`;
-        console.error(err);
+        console.log(err);
     });
 }
 

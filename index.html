@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
     <title>My PWA Musica</title>
-    <link rel="stylesheet" href="Content/css/vendors/bootstrap.css">
-    <link rel="stylesheet" href="Content/css/app/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="./Content/css/vendors/bootstrap.css">
+    <link rel="stylesheet" href="./Content/css/app/style.css">
 </head>
 <body>
   
 
+    
 
     <!--NavBar-->
     <div id="div_loader" class="text-center d-none justify-content-center">
         <div class="d-flex justify-content-between mx-auto">
-            <h1 class="mr-2 text-white">RenuevAuto</h1>
+            <h1 class="mr-2 text-white">Miusic Max</h1>
             <div class="spinner-grow spinner-grow-sm text-light my-auto"></div>
             <div class="spinner-grow spinner-grow-sm text-light my-auto"></div>
             <div class="spinner-grow spinner-grow-sm text-light my-auto"></div>
@@ -39,7 +40,7 @@
     <div class="row  " style="min-height:75vh;">
         <div class="col-12 col-md-4 ">
             <div class="card" style="width:300px">
-                <img class="card-img-top" src="Content/Images/avatar.jpg" alt="Porta" >
+                <img class="card-img-top" src="./Content/Images/avatar.jpg" alt="Porta" >
                 <div class="card-body">
                   <h4 class="card-title">Nombre:Porta</h4>
                   <h5 class="card-text">Genero: Hip-Hop/Rap</h5>
@@ -54,7 +55,7 @@
                     <div class="row" id="list_song">
                         <div class="col text-center" style="padding: 90px 0px;">
                             <div style="font-size: 100px;">
-                               <img src="Content/Images/not-connection.jpg" class="img-responsive" alt="not-connection" width="300" style="width:300px;height:300px">
+                               <img src="./Content/Images/not-connection.jpg" class="img-responsive" alt="not-connection" width="300" style="width:300px;height:300px">
                             </div>
                                 <div class=""><h4 class="card-title mb-1">Ups... Lo sentimos no tienes conexión a internet.</h4></div>
                              </div>
@@ -72,11 +73,21 @@
          </div>
      </footer>
 
-    
-    <script src="Scripts/app/Global/main.js" type="text/javascript"></script>
-    <script src="Scripts/app/cantante.js" type="text/javascript"></script>
+<!-- The actual snackbar -->
+<div id="snackbar">
+    Hay una nueva version disponible
+    <a class="btn-updateVersion" id="btn-update" href="">Actualizar</a>
+</div>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     <script src="./Scripts/app/Global/main.js" type="text/javascript"></script>
+    <script src="./Scripts/app/cantante.js" type="text/javascript"></script>
 </body>
 </html>
-
- 
 

@@ -25,13 +25,13 @@ self.addEventListener('install', function (eventinstall) {
   }).catch(error => {
     console.log(error);
   });
-  const static_inmutable=caches.open(_inmutableCahe).then(cache => {
-    return cache.addAll(files_inmutables);
-  }).catch(error => {
-    console.log(error);
-  });
+  // const static_inmutable=caches.open(_inmutableCahe).then(cache => {
+  //   return cache.addAll(files_inmutables);
+  // }).catch(error => {
+  //   console.log(error);
+  // });static_inmutable
 eventinstall.waitUntil(
-Promise.allSettled([static_cache,static_inmutable])
+Promise.allSettled([static_cache])
 );
 });
 

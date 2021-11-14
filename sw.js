@@ -68,18 +68,26 @@ self.addEventListener('activate', event=>{
 
 self.addEventListener('fetch', (event) => {
 
+// const res = caches.match(event.request)
+// .then((param) => {
+//   return param ? param : fetch(event.request).then(fetchResponse=>{
+//     caches.open(_dynamicCache).then(cache=>{
+//       cache.put(event.request,fetchResponse.clone());
+//        return fetchResponse;
+//     })
+//   });
+// })
+// .catch((error) => {
+//   console.log(error); 
+// });
 const res = caches.match(event.request)
-.then((param) => {
-  return param ? param : fetch(event.request).then(fetchResponse=>{
-    caches.open(_dynamicCache).then(cache=>{
-      cache.put(event.request,fetchResponse.clone());
-       return fetchResponse;
-    })
-  });
-})
-.catch((error) => {
-  console.log(error); 
-});
+ .then((param) => {
+   return param ? param : fetch(event.request);
+ })
+ .catch((error) => {
+   console.log(error); 
+ });
+
 event.respondWith(res);
 });
 function goOnline() {

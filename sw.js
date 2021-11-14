@@ -67,44 +67,7 @@ self.addEventListener('activate', event=>{
 
 
 self.addEventListener('fetch', (event) => {
-  /*1.Catch Only: La aplicación solamente responde lo que se enecuebta en cache*/
-/// event.respondWith(caches.match(event.request));
- 
 
-  //2.Network Only=>Responde con datos desde internet solamente 
-  
- ///  event.respondWith(fetch(event.request));
- 
-
-  //3. Cache first: Primero se va a buscar las peticiones al cache, y en caso de que no este 
-  //va a la red
-  // const res = caches.match(event.request)
-  // .then((param) => {
-  //   return param ? param : fetch(event.request);
-  // })
-  // .catch((error) => {
-  //   console.log(error); 
-  // });
-
-///Network First: Busca primero en internet y si no lo encuentra busca en cache.
-// const res = fetch(event.request)
-//  .then((param) => {
-//      return param ? param : caches.match(event.request); 
-//   })
-// .catch((error) => {
-//    console.log(error);
-//   });
-//5 Network First with fallback  
-// const res = fetch(event.request)
-//   .then((param) => {
-//       return param ? param : caches.match(event.request).then((cacheResponse) => {
-
-//       }); 
-//    })
-//  .catch((error) => {
-//     console.log(error);
-//    });
-//6.0 Cache First with FallBack
 const res = caches.match(event.request)
 .then((param) => {
   return param ? param : fetch(event.request).then(fetchResponse=>{

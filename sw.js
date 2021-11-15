@@ -7,11 +7,12 @@ self.addEventListener('install', function (eventinstall) {
   let files_appshell = [
     "/",
     '/index.html',
+    '/Content/css/app/style.css',
     '/Content/css/vendors/bootstrap.css',
     '/Content/Images/avatar.jpg',
     '/Content/Images/not-connection.jpg',
-    '/Content/Images/not-founf.png',
-    '/Content/css/app/style.css'
+    '/Content/Images/not-founf.png'
+  
   ];
 
   const static_cache=caches.open(_staticCache).then(cache => {
@@ -21,28 +22,18 @@ self.addEventListener('install', function (eventinstall) {
   });
  
 eventinstall.waitUntil(
-Promise.allSettled([static_cache])
+Promise.all([static_cache])
 );
 });
 
-if (!(navigator.onLine)) {
-  goOnline();
-}
 
-self.addEventListener('online', function () {
-  goOnline();
-});
-
-self.addEventListener('offline', function () {
-  goOnline();
-});
 
 self.addEventListener('activate', event=>{
 
   event.waitUntil(
       caches.keys().then(cachesList=>Promise.all(
           cachesList.map(cacheName=>{
-              if(_staticCache!=(cacheName)&&cacheName!=_inmutableCahe){
+              if(_staticCache!=(cacheName)){
                   return caches.delete(cacheName);
               }
           })
@@ -69,17 +60,6 @@ const res = caches.match(event.request)
 
 event.respondWith(res);
 });
-function goOnline() {
-  self.location.reload();
-}
-function goOffline() {
-  document.getElementById("list_song").innerHTML = `   <div class="col text-center" style="padding: 90px 0px;">
-  <div style="font-size: 100px;">
-     <img src="Content/Images/not-connection.png" class="img-responsive" alt="not-foud">
-  </div>
-      <div class=""><h4 class="card-title mb-1">Ups... Lo sentimos no tienes conexión a internet.</h4></div>
-   </div>`;
-}
 
 self.addEventListener('message',object=>{
   switch(object.data.action){
@@ -95,7 +75,3 @@ self.addEventListener('message',object=>{
 })
 
 
-
-function handleError() {
-  console.log('error');
-}
